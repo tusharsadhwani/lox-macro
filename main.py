@@ -21,10 +21,13 @@ def run_analysis(filepath: str) -> None:
 
     set_current_source(source)
     if hasattr(analyze, "analyze") and callable(analyze.analyze):
-        tokens = Lexer(source).tokens
-        tree, errors = Parser(tokens).parse()
-        if not errors:
-            analyze.analyze(tree)
+        try:
+            tokens = Lexer(source).tokens
+            tree, errors = Parser(tokens).parse()
+            if not errors:
+                analyze.analyze(tree)
+        except Exception:
+            pass
 
     if hasattr(analyze, "analyze_source") and callable(analyze.analyze_source):
         analyze.analyze_source(source)
