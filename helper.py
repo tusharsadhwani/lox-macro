@@ -6,6 +6,7 @@ CODEPATH = os.getenv("CODE_PATH", "/code")
 TOOLBOX_PATH = os.getenv("TOOLBOX_PATH", "/toolbox")
 ISSUES = []
 CURRENT_FILEPATH = ""
+CURRENT_SOURCE = ""
 
 
 def get_current_filepath() -> str:
@@ -14,6 +15,14 @@ def get_current_filepath() -> str:
 def set_current_filepath(filepath: str) -> str:
     global CURRENT_FILEPATH
     CURRENT_FILEPATH = filepath
+
+
+def get_current_source() -> str:
+    return CURRENT_SOURCE
+
+def set_current_source(source: str) -> str:
+    global CURRENT_SOURCE
+    CURRENT_SOURCE = source
 
 
 def prepare_result(issues):
@@ -31,7 +40,7 @@ def publish_results(result):
     """Publish the analysis results."""
     # write results into a json file:
     print("Raising issues: ", result)
-    with open(os.path.join(TOOLBOX_PATH, 'analysis_results.json'), "w") as fp:
+    with open(os.path.join(TOOLBOX_PATH, "analysis_results.json"), "w") as fp:
         fp.write(json.dumps(result))
 
 

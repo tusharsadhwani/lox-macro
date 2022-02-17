@@ -11,4 +11,7 @@ visibility = "public"
 
 [build]
   image = "python:3.10.2-slim-buster"
-  steps = "cp -R . /app"
+  steps = """
+  cp -R . /app
+  python3 -m pip install mypylox
+  """

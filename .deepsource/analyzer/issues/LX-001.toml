@@ -1,0 +1,42 @@
+title = "Redeclaring global variable"
+weight = 80
+category = "bug-risk"
+severity = "major"
+description = """
+Re-declaring a global variable can cause you to accidentally shadow older values
+and introduce bugs.
+
+## Examples
+
+### Bad practice
+
+```javascript
+let workers = 5
+
+// Some other code
+
+let workers = 10  // Re-declaration
+```
+
+### Recommended
+
+If you meant to re-define it, remove the `let` keyword. If it was meant to be a
+separate declaration, rename the variable to avoid the clash.
+
+```javascript
+let workers = 5
+
+// Some other code
+
+workers = 10  // modifying old global
+```
+
+```javascript
+let workers = 5
+
+// Some other code
+
+let other_workers = 10  // Renamed
+```
+"""
+recommended = true
