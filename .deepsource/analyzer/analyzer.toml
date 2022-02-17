@@ -1,5 +1,5 @@
-name = "Add your macro name here."
-description = "Add your macro description here."
+name = "Lox macro"
+description = "Analyze your Lox source code."
 
 # Leave these as-is
 version = "1"
